@@ -1,0 +1,515 @@
+{
+  "cards": "./Riftbound_Cards.json",
+  "cardBack": "https://Russeus.github.io/RB-TCG-Arena/Images/cardBack-blue.png",
+  "cardBackColor": "#003c55",
+  "cardBackOverrides": {
+    "Legend": "https://Russeus.github.io/RB-TCG-Arena/Images/cardBack-black.png",
+    "Battlefields": "https://Russeus.github.io/RB-TCG-Arena/Images/cardBack-black.png",
+    "Runes": "https://Russeus.github.io/RB-TCG-Arena/Images/cardBack-white.png"
+  },
+  "decks": null,
+  "automation": "./Riftbound_Automation.json",
+  "playmats": [
+    "https://cdn.mos.cms.futurecdn.net/Upoa5s3fqyo56rP8Ztyx4E-650-80.jpg.webp",
+    "https://i.imgur.com/6kolcsP.jpeg"
+  ],
+  "formats": [
+    {
+      "id": "standard",
+      "name": "Standard",
+      "rules": "standard",
+      "deckRules": "standard",
+      "layout": "1v1",
+      "automation": "standard"
+    }
+  ],
+  "rules": [
+    {
+      "id": "standard",
+      "gamePhases": [
+        {
+          "id": "awaken",
+          "name": "Awaken",
+          "interruptable": false,
+          "pause": false
+        },
+        {
+          "id": "beginning",
+          "name": "Beginning",
+          "interruptable": true,
+          "pause": false
+        },
+        {
+          "id": "channel",
+          "name": "Channel",
+          "interruptable": false,
+          "pause": false
+        },
+        {
+          "id": "draw",
+          "name": "Draw",
+          "interruptable": false,
+          "pause": false
+        },
+        {
+          "id": "main",
+          "name": "Main",
+          "interruptable": false,
+          "pause": true
+        },
+        {
+          "id": "end",
+          "name": "End",
+          "interruptable": true,
+          "pause": false
+        }
+      ],
+      "stackBehaviors": [
+        {
+          "cardType": "Unit",
+          "playTo": "base",
+          "discardTo": "trash"
+        },
+        {
+          "cardType": "Spell",
+          "playTo": "trash"
+        },
+        {
+          "cardType": "Gear",
+          "playTo": "base",
+          "discardTo": "trash"
+        },
+        {
+          "cardType": "Runes",
+          "playTo": "runePool"
+        },
+        {
+          "cardType": "Battlefields",
+          "playTo": "extra_battlefield"
+        },
+        {
+          "cardType": "Legend",
+          "playTo": "legend"
+        }
+      ]
+    }
+  ],
+  "deckRules": [
+    {
+      "id": "standard",
+      "name": "Standard",
+      "filterOptions": {
+        "Domain": "multiple_select",
+        "Set": "multiple_select"
+      },
+      "sections": [
+        {
+          "id": "legend",
+          "title": "Legend",
+          "types": [
+            "Legend"
+          ],
+          "minCount": 1,
+          "maxCount": 1,
+          "categories": [
+            {
+              "id": "legend",
+              "title": "Legend",
+              "allowedTypes": [
+                "Legend"
+              ],
+              "listLabel": "Legend",
+              "listOrder": 10
+            }
+          ]
+        },
+        {
+          "id": "main",
+          "title": "Main Deck",
+          "types": [
+            "Unit",
+            "Spell",
+            "Gear"
+          ],
+          "maxCopies": 3,
+          "minCount": 40,
+          "maxCount": 40,
+          "categories": [
+            {
+              "id": "champion",
+              "title": "Chosen Champion",
+              "allowedTypes": [
+                "Unit"
+              ],
+              "minCount": 1,
+              "maxCount": 1,
+              "listLabel": "Champion",
+              "listOrder": 20
+            },
+            {
+              "id": "unit",
+              "title": "Units",
+              "allowedTypes": [
+                "Unit"
+              ],
+              "default": true,
+              "listLabel": "MainDeck",
+              "listAliases": [
+                "Main Deck"
+              ],
+              "listOrder": 30
+            },
+            {
+              "id": "spell",
+              "title": "Spells",
+              "allowedTypes": [
+                "Spell"
+              ],
+              "default": true,
+              "listLabel": "MainDeck",
+              "listAliases": [
+                "Main Deck"
+              ],
+              "listOrder": 30
+            },
+            {
+              "id": "gear",
+              "title": "Gear",
+              "allowedTypes": [
+                "Gear"
+              ],
+              "default": true,
+              "listLabel": "MainDeck",
+              "listAliases": [
+                "Main Deck"
+              ],
+              "listOrder": 30
+            },
+            {
+              "id": "sideboard",
+              "title": "Sideboard",
+              "allowedTypes": [
+                "Unit",
+                "Spell",
+                "Gear"
+              ],
+              "maxCount": 8,
+              "includeInDeck": false,
+              "listLabel": "Sideboard",
+              "listOrder": 60
+            }
+          ]
+        },
+        {
+          "id": "battlefields",
+          "title": "Battlefields",
+          "types": [
+            "Battlefields"
+          ],
+          "maxCopies": 1,
+          "minCount": 3,
+          "maxCount": 3,
+          "categories": [
+            {
+              "id": "battlefields",
+              "title": "Battlefields",
+              "allowedTypes": [
+                "Battlefields"
+              ],
+              "listLabel": "Battlefields",
+              "listOrder": 40
+            }
+          ]
+        },
+        {
+          "id": "runes",
+          "title": "Runes",
+          "types": [
+            "Runes"
+          ],
+          "minCount": 12,
+          "maxCount": 12,
+          "maxCopies": 12,
+          "categories": [
+            {
+              "id": "rune",
+              "title": "Runes",
+              "allowedTypes": [
+                "Runes"
+              ],
+              "default": true,
+              "listLabel": "Rune Pool",
+              "listAliases": [
+                "RunePool"
+              ],
+              "listOrder": 50
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "deckText": {
+    "mode": "sectioned",
+    "entryStyle": "quantity_space_value",
+    "exportValue": "name",
+    "sectionHeaderSuffix": ":"
+  },
+  "layouts": [
+    {
+      "id": "1v1",
+      "rows": [
+        {
+          "size": "SMALL",
+          "justify": "space-around",
+          "zones": [
+            {
+              "id": "my_battlefield",
+              "name": "",
+              "faceDownVisibleTo": "not_opponent",
+              "justify": "center",
+              "style": {
+                "width": "30%",
+                "cardLayout": "overlap"
+              },
+              "allowedCardTypes": [
+                {
+                  "type": "Battlefields"
+                }
+              ]
+            },
+            {
+              "id": "extra_battlefield",
+              "name": "",
+              "faceDownVisibleTo": "not_opponent",
+              "justify": "center",
+              "optional": true,
+              "style": {
+                "width": "30%"
+              },
+              "enabledByDefault": false,
+              "allowedCardTypes": [
+                {
+                  "type": "Battlefields"
+                }
+              ]
+            },
+            {
+              "id": "opponent_battlefield",
+              "name": "",
+              "faceDownVisibleTo": "not_opponent",
+              "justify": "center",
+              "style": {
+                "width": "30%"
+              },
+              "allowedCardTypes": [
+                {
+                  "type": "Battlefields"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "size": "LARGE",
+          "zones": [
+            {
+              "id": "bf1",
+              "name": "",
+              "faceDownVisibleTo": "not_opponent",
+              "justify": "center",
+              "expand": true,
+              "allowedCardTypes": [
+                {
+                  "type": "Unit"
+                },
+                {
+                  "type": "Spell",
+                  "faceDown": true
+                }
+              ]
+            },
+            {
+              "id": "bf3",
+              "name": "",
+              "faceDownVisibleTo": "not_opponent",
+              "justify": "center",
+              "expand": true,
+              "requires": "extra_battlefield",
+              "allowedCardTypes": [
+                {
+                  "type": "Unit"
+                },
+                {
+                  "type": "Spell",
+                  "faceDown": true
+                }
+              ]
+            },
+            {
+              "id": "bf2",
+              "name": "",
+              "faceDownVisibleTo": "not_opponent",
+              "justify": "center",
+              "expand": true,
+              "allowedCardTypes": [
+                {
+                  "type": "Unit"
+                },
+                {
+                  "type": "Spell",
+                  "faceDown": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "size": "MEDIUM",
+          "zones": [
+            {
+              "id": "runes",
+              "type": "DECK",
+              "drawTo": "runePool",
+              "name": "",
+              "faceDownVisibleTo": "spectators",
+              "allowedCardTypes": [
+                {
+                  "type": "Runes",
+                  "faceDown": true
+                }
+              ]
+            },
+            {
+              "id": "runePool",
+              "name": "",
+              "faceDownVisibleTo": "everyone",
+              "justify": "center",
+              "expand": true,
+              "allowedCardTypes": [
+                {
+                  "type": "Runes"
+                }
+              ]
+            },
+            {
+              "id": "base",
+              "name": "",
+              "faceDownVisibleTo": "not_opponent",
+              "justify": "center",
+              "expand": true,
+              "allowedCardTypes": [
+                {
+                  "type": "Unit"
+                },
+                {
+                  "type": "Gear"
+                }
+              ]
+            },
+            {
+              "id": "legend",
+              "name": "",
+              "type": "SINGLE",
+              "allowedCardTypes": [
+                {
+                  "type": "Legend"
+                }
+              ]
+            },
+            {
+              "id": "champion",
+              "name": "",
+              "type": "SINGLE",
+              "allowedCardTypes": [
+                {
+                  "type": "Unit"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "reservedZones": [
+        {
+          "id": "score",
+          "type": "COUNTER",
+          "name": "Score",
+          "startValue": 0
+        },
+        {
+          "id": "hand",
+          "name": "",
+          "expand": true,
+          "allowedCardTypes": [
+            {
+              "type": "Unit",
+              "playTo": "base",
+              "discardTo": "trash"
+            },
+            {
+              "type": "Spell",
+              "playTo": "stack",
+              "discardTo": "trash"
+            },
+            {
+              "type": "Gear",
+              "playTo": "base",
+              "discardTo": "trash"
+            },
+            {
+              "type": "Runes",
+              "playTo": "runePool"
+            },
+            {
+              "type": "Battlefields",
+              "playTo": "my_battlefield"
+            },
+            {
+              "type": "Legend",
+              "playTo": "legend"
+            }
+          ]
+        },
+        {
+          "id": "mainDeck",
+          "type": "DECK",
+          "drawTo": "hand",
+          "name": "",
+          "faceDownVisibleTo": "spectators",
+          "allowedCardTypes": [
+            {
+              "type": "Unit",
+              "faceDown": true
+            },
+            {
+              "type": "Spell",
+              "faceDown": true
+            },
+            {
+              "type": "Gear",
+              "faceDown": true
+            }
+          ]
+        },
+        {
+          "id": "trash",
+          "type": "PILE",
+          "name": "",
+          "faceDownVisibleTo": "everyone",
+          "allowedCardTypes": [
+            {
+              "type": "Unit"
+            },
+            {
+              "type": "Spell"
+            },
+            {
+              "type": "Gear"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

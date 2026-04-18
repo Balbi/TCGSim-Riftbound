@@ -1,0 +1,274 @@
+[
+  {
+    "id": "standard",
+    "setupProcess": [
+      {
+        "type": "deck_selection",
+        "name": "Deck Selection",
+        "configOptions": {
+          "requireValidDeck": {
+            "type": "boolean",
+            "name": "Require Valid Decks",
+            "description": "Only decks valid for the selected format can be confirmed.",
+            "default": true
+          },
+          "allowEdit": {
+            "type": "boolean",
+            "name": "Enable Deck Editing",
+            "description": "Allow players to sideboard between deck sections after deck selection.",
+            "default": true
+          },
+          "useSameDecks": {
+            "type": "boolean",
+            "name": "Use Same Decks",
+            "description": "Reuse both players' previously selected decks and skip deck selection.",
+            "default": false
+          }
+        }
+      },
+      {
+        "type": "place_cards",
+        "name": "Place Battlefields",
+        "options": {
+          "zones": [
+            {
+              "zoneId": "my_battlefield",
+              "name": "Battlefield",
+              "count": -1,
+              "faceDown": true,
+              "deckSections": [
+                "battlefields"
+              ]
+            },
+            {
+              "zoneId": "legend",
+              "name": "Legend",
+              "count": -1,
+              "faceDown": false,
+              "deckSections": [
+                "legend"
+              ]
+            },
+            {
+              "zoneId": "champion",
+              "name": "Chosen Champion",
+              "count": -1,
+              "faceDown": false,
+              "deckSections": [
+                "champion"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "select_cards",
+        "name": "Choose Battlefield",
+        "options": {
+          "source": "my_battlefield",
+          "destination": "my_battlefield",
+          "cardCount": -1,
+          "type": "select",
+          "hideUntilCompleted": true,
+          "selectMin": 1,
+          "selectMax": 1,
+          "allowMultiple": false,
+          "replaceDestination": "trash",
+          "description": "Select 1 battlefield to play with. This will be your starting battlefield for the game."
+        }
+      },
+      {
+        "type": "wait_seconds",
+        "name": "Battlefield Reveal",
+        "options": {
+          "seconds": 3
+        }
+      },
+      {
+        "type": "choose_turn_order",
+        "name": "Turn Order",
+        "configOptions": {
+          "chooser": {
+            "type": "select",
+            "name": "Who Chooses First/Second",
+            "default": "random",
+            "choices": [
+              {
+                "value": "random",
+                "label": "Random"
+              },
+              {
+                "value": "host",
+                "label": "Host"
+              },
+              {
+                "value": "opponent",
+                "label": "Opponent"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "place_cards",
+        "name": "Place Starting Cards",
+        "options": {
+          "zones": [
+            {
+              "zoneId": "mainDeck",
+              "name": "Main Deck",
+              "count": -1,
+              "faceDown": true,
+              "deckSections": [
+                "unit",
+                "spell",
+                "gear"
+              ]
+            },
+            {
+              "zoneId": "runes",
+              "name": "Rune Pool",
+              "count": -1,
+              "faceDown": true,
+              "deckSections": [
+                "runes"
+              ]
+            },
+            {
+              "zoneId": "legend",
+              "name": "Legend",
+              "count": -1,
+              "faceDown": false,
+              "deckSections": [
+                "legend"
+              ]
+            },
+            {
+              "zoneId": "champion",
+              "name": "Chosen Champion",
+              "count": -1,
+              "faceDown": false,
+              "deckSections": [
+                "champion"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "shuffle",
+        "name": "Shuffle Decks",
+        "options": {
+          "targets": [
+            "mainDeck",
+            "runes"
+          ]
+        }
+      },
+      {
+        "type": "select_cards",
+        "name": "Mulligan",
+        "options": {
+          "source": "mainDeck",
+          "destination": "mainDeck",
+          "cardCount": 4,
+          "type": "replace",
+          "selectMin": 0,
+          "selectMax": 2,
+          "allowMultiple": false,
+          "replaceSource": "top",
+          "replaceDestination": "bottom",
+          "replaceModifyCount": 0,
+          "shuffleBeforeRedraw": false,
+          "shuffleAfterRedraw": false,
+          "revealRemoved": false,
+          "description": "Select up to 2 cards to replace. Selected cards will be placed at the bottom of your deck."
+        }
+      }
+    ],
+    "phaseProcess": [
+      {
+        "phase": "awaken",
+        "actions": [
+          {
+            "type": "untap",
+            "cardTypes": [
+              "Unit",
+              "Spell",
+              "Gear",
+              "Legend",
+              "Battlefields",
+              "Runes",
+              "Other"
+            ],
+            "zones": [
+              "my_battlefield",
+              "opponent_battlefield",
+              "extra_battlefield",
+              "bf1",
+              "bf2",
+              "bf3",
+              "base",
+              "runePool",
+              "legend",
+              "champion"
+            ]
+          }
+        ]
+      },
+      {
+        "phase": "channel",
+        "actions": [
+          {
+            "type": "draw",
+            "zones": [
+              "runes"
+            ],
+            "count": 2
+          }
+        ]
+      },
+      {
+        "phase": "channel",
+        "actions": [
+          {
+            "type": "draw",
+            "zones": [
+              "runes"
+            ],
+            "count": 1,
+            "conditions": [
+              {
+                "requirement": "all",
+                "conditions": [
+                  {
+                    "type": "equal",
+                    "check": "isLastPlayer",
+                    "value": true
+                  },
+                  {
+                    "type": "equal",
+                    "check": "currentPlayerTurn",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "phase": "draw",
+        "actions": [
+          {
+            "type": "draw",
+            "zones": [
+              "mainDeck"
+            ],
+            "count": 1
+          }
+        ]
+      }
+    ]
+  }
+]
