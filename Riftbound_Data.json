@@ -1,5 +1,5 @@
 {
-  "cards": "./Riftbound_Cards.json",
+  "cards": "https://balbi.github.io/TCGSim-Riftbound/Riftbound_Cards.json",
   "cardBack": "https://Russeus.github.io/RB-TCG-Arena/Images/cardBack-blue.png",
   "cardBackColor": "#003c55",
   "cardBackOverrides": {
@@ -8,7 +8,7 @@
     "Runes": "https://Russeus.github.io/RB-TCG-Arena/Images/cardBack-white.png"
   },
   "decks": null,
-  "automation": "./Riftbound_Automation.json",
+  "automation": "https://balbi.github.io/TCGSim-Riftbound/Riftbound_Automation.json",
   "playmats": [
     "https://cdn.mos.cms.futurecdn.net/Upoa5s3fqyo56rP8Ztyx4E-650-80.jpg.webp",
     "https://i.imgur.com/6kolcsP.jpeg"

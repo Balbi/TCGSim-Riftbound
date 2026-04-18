@@ -1,7 +1,7 @@
 {
   "id": "riftbound",
   "name": "Riftbound",
-  "data": "./Riftbound_Data.json",
+  "data": "https://balbi.github.io/TCGSim-Riftbound/Riftbound_Data.json",
   "coverPhoto": "https://i.imgur.com/xup3S4u.jpeg",
   "icon": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/riotbar/6222c5f038cd27fe9fc5aec17616e7ba0ea1c69e-2105x2105.svg?&h=50&fit=max",
   "creatorName": "Balbi",
