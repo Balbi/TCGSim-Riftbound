@@ -73,7 +73,7 @@
           "selectMin": 1,
           "selectMax": 1,
           "allowMultiple": false,
-          "replaceDestination": "trash",
+          "replaceDestination": "delete",
           "description": "Select 1 battlefield to play with. This will be your starting battlefield for the game."
         }
       },
