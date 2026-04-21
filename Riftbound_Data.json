@@ -265,8 +265,8 @@
           "zones": [
             {
               "id": "my_battlefield",
-              "name": "",
-              "faceDownVisibleTo": "not_opponent",
+              "name": "Battlefield Zone",
+              "hideName": true,
               "justify": "center",
               "style": {
                 "width": "30%",
@@ -276,12 +276,13 @@
                 {
                   "type": "Battlefields"
                 }
-              ]
+              ],
+              "visibility": "not_opponent"
             },
             {
               "id": "extra_battlefield",
-              "name": "",
-              "faceDownVisibleTo": "not_opponent",
+              "name": "Battlefield Zone",
+              "hideName": true,
               "justify": "center",
               "optional": true,
               "style": {
@@ -292,12 +293,13 @@
                 {
                   "type": "Battlefields"
                 }
-              ]
+              ],
+              "visibility": "not_opponent"
             },
             {
               "id": "opponent_battlefield",
-              "name": "",
-              "faceDownVisibleTo": "not_opponent",
+              "name": "Battlefield Zone",
+              "hideName": true,
               "justify": "center",
               "style": {
                 "width": "30%"
@@ -306,7 +308,8 @@
                 {
                   "type": "Battlefields"
                 }
-              ]
+              ],
+              "visibility": "not_opponent"
             }
           ]
         },
@@ -315,8 +318,8 @@
           "zones": [
             {
               "id": "bf1",
-              "name": "",
-              "faceDownVisibleTo": "not_opponent",
+              "name": "Battlefield",
+              "hideName": true,
               "justify": "center",
               "expand": true,
               "allowedCardTypes": [
@@ -324,15 +327,15 @@
                   "type": "Unit"
                 },
                 {
-                  "type": "Spell",
-                  "faceDown": true
+                  "type": "Spell"
                 }
-              ]
+              ],
+              "visibility": "not_opponent"
             },
             {
               "id": "bf3",
-              "name": "",
-              "faceDownVisibleTo": "not_opponent",
+              "name": "Battlefield",
+              "hideName": true,
               "justify": "center",
               "expand": true,
               "requires": "extra_battlefield",
@@ -341,15 +344,15 @@
                   "type": "Unit"
                 },
                 {
-                  "type": "Spell",
-                  "faceDown": true
+                  "type": "Spell"
                 }
-              ]
+              ],
+              "visibility": "not_opponent"
             },
             {
               "id": "bf2",
-              "name": "",
-              "faceDownVisibleTo": "not_opponent",
+              "name": "Battlefield",
+              "hideName": true,
               "justify": "center",
               "expand": true,
               "allowedCardTypes": [
@@ -357,10 +360,10 @@
                   "type": "Unit"
                 },
                 {
-                  "type": "Spell",
-                  "faceDown": true
+                  "type": "Spell"
                 }
-              ]
+              ],
+              "visibility": "not_opponent"
             }
           ]
         },
@@ -371,31 +374,33 @@
               "id": "runes",
               "type": "DECK",
               "drawTo": "runePool",
-              "name": "",
-              "faceDownVisibleTo": "spectators",
+              "name": "Rune Deck",
+              "hideName": true,
               "allowedCardTypes": [
                 {
-                  "type": "Runes",
-                  "faceDown": true
+                  "type": "Runes"
                 }
-              ]
+              ],
+              "visibility": "not_players",
+              "faceDown": true
             },
             {
               "id": "runePool",
-              "name": "",
-              "faceDownVisibleTo": "everyone",
+              "name": "Rune Pool",
+              "hideName": true,
               "justify": "center",
               "expand": true,
               "allowedCardTypes": [
                 {
                   "type": "Runes"
                 }
-              ]
+              ],
+              "visibility": "all"
             },
             {
               "id": "base",
-              "name": "",
-              "faceDownVisibleTo": "not_opponent",
+              "name": "Base",
+              "hideName": true,
               "justify": "center",
               "expand": true,
               "allowedCardTypes": [
@@ -405,11 +410,13 @@
                 {
                   "type": "Gear"
                 }
-              ]
+              ],
+              "visibility": "not_opponent"
             },
             {
               "id": "legend",
-              "name": "",
+              "name": "Legend Zone",
+              "hideName": true,
               "type": "SINGLE",
               "allowedCardTypes": [
                 {
@@ -419,7 +426,8 @@
             },
             {
               "id": "champion",
-              "name": "",
+              "name": "Champion Zone",
+              "hideName": true,
               "type": "SINGLE",
               "allowedCardTypes": [
                 {
@@ -439,8 +447,9 @@
         },
         {
           "id": "hand",
-          "name": "",
+          "name": "Hand",
           "expand": true,
+          "hideName": true,
           "allowedCardTypes": [
             {
               "type": "Unit",
@@ -475,28 +484,8 @@
           "id": "mainDeck",
           "type": "DECK",
           "drawTo": "hand",
-          "name": "",
-          "faceDownVisibleTo": "spectators",
-          "allowedCardTypes": [
-            {
-              "type": "Unit",
-              "faceDown": true
-            },
-            {
-              "type": "Spell",
-              "faceDown": true
-            },
-            {
-              "type": "Gear",
-              "faceDown": true
-            }
-          ]
-        },
-        {
-          "id": "trash",
-          "type": "PILE",
-          "name": "",
-          "faceDownVisibleTo": "everyone",
+          "name": "Main Deck",
+          "hideName": true,
           "allowedCardTypes": [
             {
               "type": "Unit"
@@ -507,7 +496,28 @@
             {
               "type": "Gear"
             }
-          ]
+          ],
+          "visibility": "not_players",
+          "faceDown": true
+        },
+        {
+          "id": "trash",
+          "type": "DECK",
+          "name": "Trash",
+          "hideName": true,
+          "allowedCardTypes": [
+            {
+              "type": "Unit"
+            },
+            {
+              "type": "Spell"
+            },
+            {
+              "type": "Gear"
+            }
+          ],
+          "visibility": "all",
+          "faceDown": false
         }
       ]
     }
